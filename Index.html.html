@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Boho Design | Architectural + Interior Design Studio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #0a0a0a; color: #f5f0e8; }
+
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid #c9a84c44;
+    background: #0a0a0a;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { font-size: 1.5rem; letter-spacing: 0.2em; color: #c9a84c; font-weight: 700; }
+  .logo span { color: #f5f0e8; font-weight: 300; }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul li a { color: #c9a84c; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; font-family: sans-serif; transition: color 0.2s; }
+  nav ul li a:hover { color: #f5f0e8; }
+
+  .hero {
+    min-height: 92vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(160deg, #0a0a0a 60%, #1a1408 100%);
+    border-bottom: 1px solid #c9a84c33;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 70% 40%, #c9a84c14 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: sans-serif; font-size: 0.75rem; letter-spacing: 0.25em;
+    color: #c9a84c; text-transform: uppercase; margin-bottom: 1.5rem;
+    border: 1px solid #c9a84c55; padding: 0.4rem 1.2rem; display: inline-block;
+    border-radius: 2px;
+  }
+  .hero h1 { font-size: clamp(2.8rem, 6vw, 5rem); color: #f5f0e8; letter-spacing: 0.05em; line-height: 1.1; margin-bottom: 0.5rem; }
+  .hero h1 span { color: #c9a84c; }
+  .hero p { font-family: sans-serif; color: #a89880; font-size: 1rem; max-width: 480px; margin: 1.2rem auto 2rem; line-height: 1.7; }
+  .btn-gold {
+    background: #c9a84c; color: #0a0a0a; border: none;
+    padding: 0.85rem 2.2rem; font-family: sans-serif; font-size: 0.85rem;
+    letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+    border-radius: 2px; font-weight: 700; transition: background 0.2s, transform 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-gold:hover { background: #e0bd68; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: #c9a84c; border: 1px solid #c9a84c;
+    padding: 0.85rem 2.2rem; font-family: sans-serif; font-size: 0.85rem;
+    letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+    border-radius: 2px; font-weight: 600; transition: all 0.2s;
+    text-decoration: none; display: inline-block; margin-left: 1rem;
+  }
+  .btn-outline:hover { background: #c9a84c22; }
+
+  section { padding: 5rem 3rem; }
+  .section-label {
+    font-family: sans-serif; font-size: 0.72rem; letter-spacing: 0.25em;
+    color: #c9a84c; text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  .section-title { font-size: 2.2rem; color: #f5f0e8; margin-bottom: 1rem; }
+  .gold-line { width: 48px; height: 2px; background: #c9a84c; margin: 0 auto 2.5rem; }
+  .section-sub { font-family: sans-serif; color: #a89880; font-size: 0.95rem; line-height: 1.8; max-width: 520px; }
+
+  .services { background: #0e0e0e; text-align: center; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .service-card {
+    background: #141414; border: 1px solid #c9a84c33; border-radius: 4px;
+    padding: 2rem 1.5rem; transition: border-color 0.2s, transform 0.2s;
+  }
+  .service-card:hover { border-color: #c9a84c88; transform: translateY(-3px); }
+  .service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .service-card h3 { color: #c9a84c; font-size: 1rem; letter-spacing: 0.1em; margin-bottom: 0.7rem; font-family: sans-serif; text-transform: uppercase; }
+  .service-card p { font-family: sans-serif; color: #a89880; font-size: 0.88rem; line-height: 1.7; }
+
+  .gallery { background: #0a0a0a; text-align: center; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
+  .gallery-item {
+    background: #1a1a14; border: 1px solid #c9a84c22; border-radius: 4px;
+    aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+    font-family: sans-serif; font-size: 0.75rem; color: #c9a84c55;
+    letter-spacing: 0.12em; text-transform: uppercase; position: relative;
+    overflow: hidden;
+  }
+  .gallery-item svg { width: 36px; height: 36px; opacity: 0.2; }
+  .gallery-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, #0a0a0acc);
+    padding: 1.5rem 1rem 0.8rem;
+    font-family: sans-serif; font-size: 0.75rem; color: #c9a84c;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  .about-strip {
+    background: #c9a84c; padding: 3rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .about-strip h2 { font-size: 1.8rem; color: #0a0a0a; max-width: 400px; }
+  .about-strip p { font-family: sans-serif; font-size: 0.9rem; color: #2a1f00; max-width: 380px; line-height: 1.7; }
+
+  .stats { background: #0e0e0e; display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; padding: 3.5rem 2rem; border-top: 1px solid #c9a84c22; border-bottom: 1px solid #c9a84c22; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 2.5rem; color: #c9a84c; font-weight: 700; }
+  .stat-label { font-family: sans-serif; font-size: 0.75rem; color: #a89880; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.3rem; }
+
+  .contact { background: #0a0a0a; text-align: center; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .contact-card {
+    background: #141414; border: 1px solid #c9a84c33; border-radius: 4px;
+    padding: 1.8rem 1.5rem;
+  }
+  .contact-card .c-icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
+  .contact-card h4 { font-family: sans-serif; font-size: 0.72rem; color: #c9a84c; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .contact-card p { font-family: sans-serif; font-size: 0.88rem; color: #d4c4a8; line-height: 1.6; }
+
+  footer {
+    background: #060606; border-top: 1px solid #c9a84c33;
+    text-align: center; padding: 2rem 1rem;
+    font-family: sans-serif; font-size: 0.8rem; color: #665544;
+  }
+  footer span { color: #c9a84c; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BD<span> | Boho Design</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Architectural + Interior Design Studio</div>
+  <h1>Design that<br/><span>feels like home.</span></h1>
+  <p>A daily dose of inspiration for your spaces — crafted with warmth, intention, and a touch of bohemian soul. By two sisters in Ghana.</p>
+  <div>
+    <a class="btn-gold" href="#gallery">View Our Work</a>
+    <a class="btn-outline" href="#contact">Get in Touch</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">869+</div><div class="stat-label">Followers</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Sisters Behind It</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Design Inspiration</div></div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Our Services</h2>
+  <div class="gold-line"></div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Interior Design</h3>
+      <p>Complete interior transformations that blend function with bohemian elegance for any living space.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌿</div>
+      <h3>Plant Styling</h3>
+      <p>Bringing life and nature indoors — curated plant arrangements that breathe warmth into your home.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <h3>Architectural Design</h3>
+      <p>Thoughtful spatial planning and architectural solutions tailored to your lifestyle and vision.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💡</div>
+      <h3>Design Consultation</h3>
+      <p>Expert guidance on color schemes, lighting, furniture placement, and personal touches.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <h3>Space Recreation</h3>
+      <p>Reviving and reimagining existing spaces to match your evolving taste and needs.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📐</div>
+      <h3>Home Lifestyle</h3>
+      <p>Holistic lifestyle design — from décor to daily living — for spaces that truly feel like you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="section-label">Our Work</div>
+  <h2 class="section-title">Gallery</h2>
+  <div class="gold-line"></div>
+  <p class="section-sub" style="margin: 0 auto 1rem;">A glimpse of spaces we have transformed — each one a story of comfort, character, and creativity.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="14" width="36" height="24" rx="2" stroke="#c9a84c" stroke-width="1.5"/><path d="M6 22h36" stroke="#c9a84c" stroke-width="1.5"/><path d="M18 38V22" stroke="#c9a84c" stroke-width="1.5"/></svg>
+      <div class="gallery-label">Living Room</div>
+    </div>
+    <div class="gallery-item">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="10" width="32" height="28" rx="2" stroke="#c9a84c" stroke-width="1.5"/><path d="M8 20h32" stroke="#c9a84c" stroke-width="1.5"/><circle cx="24" cy="34" r="4" stroke="#c9a84c" stroke-width="1.5"/></svg>
+      <div class="gallery-label">Bedroom</div>
+    </div>
+    <div class="gallery-item">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="20" r="10" stroke="#c9a84c" stroke-width="1.5"/><path d="M16 38c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#c9a84c" stroke-width="1.5"/></svg>
+      <div class="gallery-label">The Team</div>
+    </div>
+    <div class="gallery-item">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="8" width="12" height="32" rx="2" stroke="#c9a84c" stroke-width="1.5"/><rect x="26" y="18" width="12" height="22" rx="2" stroke="#c9a84c" stroke-width="1.5"/></svg>
+      <div class="gallery-label">Open Space</div>
+    </div>
+    <div class="gallery-item">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 36L24 12l12 24" stroke="#c9a84c" stroke-width="1.5"/><path d="M16 28h16" stroke="#c9a84c" stroke-width="1.5"/></svg>
+      <div class="gallery-label">Lighting</div>
+    </div>
+    <div class="gallery-item">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="32" height="32" rx="2" stroke="#c9a84c" stroke-width="1.5"/><path d="M8 24h32M24 8v32" stroke="#c9a84c" stroke-width="1.5"/></svg>
+      <div class="gallery-label">Recreation</div>
+    </div>
+  </div>
+  <p style="font-family:sans-serif;font-size:0.8rem;color:#665544;margin-top:1.2rem;">
+    Replace the placeholder boxes above with your actual photos by editing the HTML file.
+  </p>
+</section>
+
+<div class="about-strip" id="about">
+  <h2>By two sisters — with love for beautiful homes.</h2>
+  <div>
+    <p>Boho Design is an Accra-based architectural and interior design studio founded by two sisters who believe every space deserves to tell a story. We blend natural textures, warm palettes, and functional design to create homes that feel genuinely lived-in and loved.</p>
+    <p style="margin-top: 1.2rem; font-weight: 700; font-size: 1rem; color: #0a0a0a; letter-spacing: 0.08em;">Vivian Vaye &amp; Libby Collier</p>
+    <p style="font-size: 0.8rem; color: #3a2a00; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem;">Co-Founders, Boho Design</p>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="section-label">Reach Us</div>
+  <h2 class="section-title">Contact</h2>
+  <div class="gold-line"></div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="c-icon">📱</div>
+      <h4>Phone</h4>
+      <p>+233 245 303 130</p>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">✉️</div>
+      <h4>Email</h4>
+      <p>bohodesigngh@gmail.com</p>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">📸</div>
+      <h4>Instagram</h4>
+      <p>@bohodesigngh</p>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">📍</div>
+      <h4>Location</h4>
+      <p>Accra, Ghana</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <span>Boho Design</span> — Architectural + Interior Design Studio, Accra, Ghana.</p>
+  <p style="margin-top:0.4rem;">Home 🏠 Plant 🌿 Lifestyle — A daily dose of inspiration for your homes.</p>
+  <p style="margin-top:0.5rem; color: #c9a84c88;">Founded by Vivian Vaye &amp; Libby Collier</p>
+</footer>
+
+</body>
+</html>
